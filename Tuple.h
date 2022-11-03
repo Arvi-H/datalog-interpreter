@@ -8,12 +8,25 @@
 
 class Tuple {
 public:
-    Tuple (std::vector<std::string> values) : values(values) {}
+    Tuple() = default;
+    Tuple (std::vector<std::string> values) : rowValues(values) {}
     
     bool operator< (const Tuple &rhs) const {
-        return values < rhs.values;
+        return rowValues < rhs.rowValues;
+    }
+    
+    std::string findValue(int index) {
+        if (index > rowValues.size()) {
+            throw "Ouf of bounds";
+        }
+        return rowValues.at(index);
     }
 
+    void addValue(std::string value) {
+        rowValues.push_back(value);
+    }
+    
+/*
     int size() {
         return values.size();
     }
@@ -22,27 +35,20 @@ public:
         values.push_back(value);
     }
 
-    std::string findValue(int index) {
-        if (index > values.size()) {
-            throw "Ouf of bounds";
-        }
-        return values.at(index);
-    }
 
     std::string toString(Header header) {
         std::stringstream out;
         std::string sep = "";
         for (unsigned i = 0; i < size(); i++) {
-            std::string name = header.findAttribute(i);
-            std::string value = findValue(i);
-            out << sep << " " << name << "=" << value;
+            out << sep << " " << header.findAttribute(i) << "=" << findValue(i);
             sep = ",";
         }
         return out.str();
     }
+*/
        
 private:
-    std::vector<std::string> values;
+    std::vector<std::string> rowValues;
 };
 
 #endif
