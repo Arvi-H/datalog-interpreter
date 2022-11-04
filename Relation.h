@@ -11,7 +11,6 @@ class Relation {
     public: 
         Relation() = default;
         Relation(std::string name, Header columnNames) : name(name), columnNames(columnNames) {}
-       
 
         // Helper Functions
         std::string getName();

@@ -19,11 +19,11 @@ int main(int argc, char** argv) {
 // Convert string stream to a sting
     std::string myFileString = in.str();
 
-// Run Lexer
-    Lexer lexer;
-    lexer.Run(myFileString);
-
     try {
+        // Run Lexer
+        Lexer lexer;
+        lexer.Run(myFileString);
+
         // Run Parser 
         Parser parser(lexer.getTokens());
         DatalogProgram program = parser.Parse();

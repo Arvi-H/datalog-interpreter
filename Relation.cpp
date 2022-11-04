@@ -78,10 +78,9 @@ Relation Relation::project(std::vector<int> columnsToProject) {
 }
 
 Relation Relation::rename(std::vector<std::string> newColumnNames) {
-    // Rename old columns 
     Header columnNames(newColumnNames);
     
-    Relation newRelation(Relation::name, Relation::columnNames);
+    Relation newRelation(Relation::name, columnNames);
     newRelation.setTuples(tuples);
     
     return newRelation;
