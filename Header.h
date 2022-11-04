@@ -16,7 +16,9 @@ public:
     }
     
     std::string findAttribute(int index) {
-        if (index > columnNames.size()) {
+        int size = columnNames.size();
+
+        if (index > size) {
             throw "Out of Bounds";
         } 
 

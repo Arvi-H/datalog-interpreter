@@ -16,7 +16,9 @@ public:
     }
     
     std::string findValue(int index) {
-        if (index > rowValues.size()) {
+        int size = rowValues.size();
+
+        if (index > size) {
             throw "Ouf of bounds";
         }
         return rowValues.at(index);
@@ -36,7 +38,7 @@ public:
         }
         std::stringstream out;
         std::string sep = "";
-        for (unsigned i = 0; i < getTupleSize(); i++) {
+        for (int i = 0; i < getTupleSize(); i++) {
             out << sep << " " << header.findAttribute(i) << "=" << findValue(i);
             sep = ",";
         }
