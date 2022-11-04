@@ -28,7 +28,6 @@ public:
     }
 
 private:
-    // Vector of attributes
     std::vector<std::string> columnNames;
 };
  

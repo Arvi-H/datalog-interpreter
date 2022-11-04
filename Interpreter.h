@@ -62,6 +62,7 @@ class Interpreter {
             Relation output = database.getRelation(predicate.getID());
             std::map<std::string, unsigned int> seen;
             std::vector<int> uniqueIndex;
+            std::vector<std::string> uniqueValues;
             unsigned int col = 0;
 
             for (Parameter parameter : predicate.getParameters()) {
@@ -71,28 +72,23 @@ class Interpreter {
                     output = output.select(col, parameter.getID());    // select type 1 (int, value)
                 } else {
                     // seenBefore()
-                    if (seen.count(val) > 0) {
+                    if (seen.find(val) != seen.end()) {
                         output = output.select(col, seen.at(val));   // select type 2 (int, int)
                     // mark it as seen
                     } else {  
                         seen.insert({val, col});
                         uniqueIndex.push_back(col);
+                        uniqueValues.push_back(val);
                     }
                 }
                 col++;
             }
 
-            // rename
-            auto iter = seen.begin();
-            col = 0;
-            while (iter != seen.end()) {
-                output = output.rename(iter->second, iter->first);
-                ++iter;
-                ++col;
-            }
-            
             // project
             output = output.project(uniqueIndex);
+
+            // rename
+            output = output.rename(uniqueValues);
 
             return output;
         }

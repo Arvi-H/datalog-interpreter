@@ -25,7 +25,6 @@ class Relation {
         Relation select(int columnIndex1, int columnIndex2);
         Relation project(std::vector<int> columnsToProject);
         Relation rename(std::vector<std::string> newColumnNames);
-        Relation rename(unsigned int colToRename, std::string newName);
 
     private:
         std::string name;

@@ -86,13 +86,3 @@ Relation Relation::rename(std::vector<std::string> newColumnNames) {
     
     return newRelation;
 }
-
-Relation Relation::rename(unsigned int colToRename, std::string newName) {
-    Header newHeader = Relation::columnNames;
-    newHeader.findAttribute(colToRename) = newName;
-
-    Relation newRelation(Relation::name, Relation::columnNames);
-    newRelation.setTuples(tuples);
-
-    return newRelation;
-}
