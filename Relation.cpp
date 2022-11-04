@@ -71,4 +71,3 @@ Relation Relation::rename(std::vector<std::string> newColumnNames) {
     
     return newRelation;
 }
-

@@ -22,14 +22,6 @@ public:
 
         return columnNames.at(index);
     }
-/*
-    // attributes helper functions
-    int size() {
-        return attributes.size();
-    }
-
-
-*/
 
 private:
     // Vector of attributes

@@ -25,17 +25,8 @@ public:
     void addValue(std::string value) {
         rowValues.push_back(value);
     }
-    
+
 /*
-    int size() {
-        return values.size();
-    }
-
-    void addValue(std::string value) {
-        values.push_back(value);
-    }
-
-
     std::string toString(Header header) {
         std::stringstream out;
         std::string sep = "";
