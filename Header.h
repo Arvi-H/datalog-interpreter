@@ -23,6 +23,10 @@ public:
         return columnNames.at(index);
     }
 
+    int getHeaderSize() {
+        return columnNames.size();
+    }
+
 private:
     // Vector of attributes
     std::vector<std::string> columnNames;

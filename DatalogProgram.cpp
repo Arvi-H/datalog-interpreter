@@ -25,6 +25,27 @@ void DatalogProgram::setRules(Rule rule) {
     DatalogProgram::rules.push_back(rule);
 }
  
+// Get Schemes
+std::vector<Predicate> DatalogProgram::getSchemes() {
+    return DatalogProgram::schemes;
+}
+
+// Get Facts
+std::vector<Predicate> DatalogProgram::getFacts() {
+    return DatalogProgram::facts;
+}
+
+// Get Rules
+std::vector<Rule> DatalogProgram::getRules() {
+    return DatalogProgram::rules;
+}
+
+// Get Queries
+std::vector<Predicate> DatalogProgram::getQueries() {
+    return DatalogProgram::queries;
+}
+
+
 // Print Datalog Program
 std::string DatalogProgram::toString() {
     std::stringstream out;

@@ -19,9 +19,9 @@ public:
     ~Lexer();
 
     void Run(std::string& input);
-    void printTotalTokens();
+    // void printTotalTokens();
     std::vector<Token*> getTokens();
 };
 
-#endif // LEXER_H
+#endif  
 

@@ -146,7 +146,8 @@ void Lexer::Run(std::string& input) {
         input.erase(0, maxRead);
     }
 }
-   
+
+/*
 void Lexer::printTotalTokens() {
     int totalTokens = tokens.size();
     while (!tokens.empty()) {
@@ -155,6 +156,7 @@ void Lexer::printTotalTokens() {
     }
     std::cout << "Total Tokens = " << totalTokens << std::endl;
 }
+*/  
 
 std::vector<Token*> Lexer::getTokens() {
     return tokens;

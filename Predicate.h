@@ -19,6 +19,12 @@ public:
     // Set Predicate ID
     void setID(std::string ID);
     
+    // Return predicate_id
+    std::string getID();
+
+    // Return parameter list
+    std::vector<Parameter> getParameters();
+
     // Print Parameters
     std::string toString() const; 
 };

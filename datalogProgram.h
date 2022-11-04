@@ -18,6 +18,16 @@ public:
 
     void setFactsDomain(std::string domain);
 
+// Get Vectors
+    std::vector<Predicate> getSchemes();
+
+    std::vector<Predicate> getFacts();
+
+    std::vector<Rule> getRules();
+
+    std::vector<Predicate> getQueries();
+
+
 // Print DataLog Program
     std::string toString();
 

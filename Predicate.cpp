@@ -9,6 +9,14 @@ void Predicate::addParameter(Parameter p) {
     parameters.push_back(param);
 }
 
+std::string Predicate::getID() {
+    return Predicate::predicate_id;
+}
+
+std::vector<Parameter> Predicate::getParameters() {
+    return Predicate::parameters;
+}
+
 std::string Predicate::toString() const {
     std::stringstream out;
 

@@ -11,8 +11,8 @@ public:
     Tuple() = default;
     Tuple (std::vector<std::string> values) : rowValues(values) {}
     
-    bool operator< (const Tuple &rhs) const {
-        return rowValues < rhs.rowValues;
+    bool operator< (const Tuple t) const {
+        return rowValues < t.rowValues;
     }
     
     std::string findValue(int index) {
@@ -26,17 +26,22 @@ public:
         rowValues.push_back(value);
     }
 
-/*
+    int getTupleSize() {
+        return rowValues.size();
+    }
+
     std::string toString(Header header) {
+        if (getTupleSize() != header.getHeaderSize()) {
+            throw "Tuple size has to equal Header size!";
+        }
         std::stringstream out;
         std::string sep = "";
-        for (unsigned i = 0; i < size(); i++) {
+        for (unsigned i = 0; i < getTupleSize(); i++) {
             out << sep << " " << header.findAttribute(i) << "=" << findValue(i);
             sep = ",";
         }
         return out.str();
     }
-*/
        
 private:
     std::vector<std::string> rowValues;

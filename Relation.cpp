@@ -13,6 +13,21 @@ void Relation::setTuples(std::set<Tuple> tuples) {
     this->tuples = tuples;
 }
 
+int Relation::getSetSize() {
+    return tuples.size();
+}
+
+std::string Relation::toString() {
+    std::stringstream out;
+    for (Tuple t : Relation::tuples) {
+        if (t.getTupleSize() > 0) {
+            out << " " << t.toString(Relation::columnNames) << std::endl;
+        }
+    }
+    
+    return out.str();
+}
+
 // Relational Algebra
 Relation Relation::select(int columnIndex, std::string value) {
     Relation newRelation(Relation::name, Relation::columnNames);
@@ -38,9 +53,7 @@ Relation Relation::select(int columnIndex1, int columnIndex2) {
     return newRelation;
 }
 
-// TODO: Delete pointer 
 Relation Relation::project(std::vector<int> columnsToProject) {
-    Relation* newRelation;
     Header newHeader;
 
     // Update columnNames with the selcted columns (passed in the function)
@@ -48,7 +61,7 @@ Relation Relation::project(std::vector<int> columnsToProject) {
         newHeader.addAttribute(Relation::columnNames.findAttribute(i));
     }
     
-    newRelation = new Relation(Relation::name, newHeader);  
+    Relation newRelation(Relation::name, newHeader);  
 
     // Update rows at the selcted columns (passed in the function)
     for (auto tuple : tuples) {
@@ -58,8 +71,10 @@ Relation Relation::project(std::vector<int> columnsToProject) {
             newTuple.addValue(tuple.findValue(i));
         }
 
-        newRelation->addTuple(newTuple);
+        newRelation.addTuple(newTuple);
     }
+
+    return newRelation;
 }
 
 Relation Relation::rename(std::vector<std::string> newColumnNames) {
@@ -69,5 +84,15 @@ Relation Relation::rename(std::vector<std::string> newColumnNames) {
     Relation newRelation(Relation::name, Relation::columnNames);
     newRelation.setTuples(tuples);
     
+    return newRelation;
+}
+
+Relation Relation::rename(unsigned int colToRename, std::string newName) {
+    Header newHeader = Relation::columnNames;
+    newHeader.findAttribute(colToRename) = newName;
+
+    Relation newRelation(Relation::name, Relation::columnNames);
+    newRelation.setTuples(tuples);
+
     return newRelation;
 }
